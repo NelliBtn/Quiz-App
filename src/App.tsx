@@ -7,7 +7,7 @@ import { QuestionState, Difficulty } from './API';
 
 const TOTAL_QUESTIONS = 10;
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string,
   answer: string,
   correct: boolean,
