@@ -64,8 +64,9 @@ const App = () => {
         userAnswer={userAnswers ? userAnswers[number] : undefined}
         callback={checkAnswer}
       />)}
-      {/* last condition -- only if user already gave an answer for current question */}
-      {!gameOver && !loading && userAnswers.length === number + 1 && 
+      {/* second from last condition -- only if user already gave an answer for current question */}
+      {/* last condition -- only if it is not the last question */}
+      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 &&
       (<button className="next" onClick={nextQuestion}>Next question</button>)}
     </div>
   );
