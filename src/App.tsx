@@ -16,6 +16,7 @@ export type AnswerObject = {
 
 const App = () => {
 
+  // states
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
@@ -23,15 +24,20 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+
+  // game functions
   const startTrivia = async() => {
+    // start game
     setLoading(true);
     setGameOver(false);
 
+    // fetch questions from api
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       Difficulty.EASY
     );
 
+    // set questions, initial score, user answers, and the first question
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswers([]);
@@ -60,7 +66,7 @@ const App = () => {
   const nextQuestion = () => {
     // move on to the next question if not the
     const nextQuestion = number + 1;
-    // 
+    //  check if it's the last question
     if (nextQuestion === TOTAL_QUESTIONS) {
       setGameOver(true);
     } else {
